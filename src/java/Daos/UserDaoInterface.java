@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package DAO;
+package Daos;
 
-import DTO.User;
+import Dtos.User;
 import java.util.ArrayList;
 
 /**

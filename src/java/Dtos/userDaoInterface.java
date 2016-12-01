@@ -5,7 +5,7 @@
  */
 package Interfaces;
 
-import Dtos.user;
+import Dtos.User;
 import java.util.ArrayList;
 
 /**
@@ -15,9 +15,9 @@ import java.util.ArrayList;
 public interface userDaoInterface {
     
     
-    public ArrayList<user> getAllUsers();
-    public user checkLogin(String username, String password);
-    public int addUser(user u);
-     public user getUserByUsername(String username);
+    public ArrayList<User> getAllUsers();
+    public User checkLogin(String username, String password);
+    public int addUser(User u);
+     public User getUserByUsername(String username);
      public int deleteUser(String username);
 }
