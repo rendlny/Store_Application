@@ -14,4 +14,5 @@ import Dtos.ProductImage;
 public interface ProductImageDaoInterface {
     public boolean addImageToProduct(ProductImage img);
     public boolean deleteProductImage(ProductImage img);
+    public ProductImage getProductImageById(int id);
 }

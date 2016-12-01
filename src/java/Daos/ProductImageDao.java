@@ -5,9 +5,11 @@
  */
 package Daos;
 
+import Dtos.Product;
 import Dtos.ProductImage;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
@@ -93,6 +95,52 @@ public class ProductImageDao extends Dao implements ProductImageDaoInterface {
         }
 
         return deleted;
+    }
+
+    @Override
+    public ProductImage getProductImageById(int id) {
+        ProductImage img = null;
+        
+        Connection con = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        try {
+            con = getConnection();
+
+            String query = "SELECT * FROM product_images WHERE image_id = ?";
+
+            ps = con.prepareStatement(query);
+
+            ps.setInt(1, id);
+
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+                img = new ProductImage(
+                        rs.getInt("image_id"),
+                        rs.getInt("product_id"),
+                        rs.getString("image_url")
+                );
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Exception occured in the getProductImageById()"
+                    + " method: " + e.getMessage());
+        } finally {
+            try {
+                if (ps != null) {
+                    ps.close();
+                }
+                if (con != null) {
+                    freeConnection(con);
+                }
+            } catch (SQLException e) {
+                System.out.println("Exception occured in the finally section of"
+                        + " the getProductImageById() method: " + e.getMessage());
+            }
+        }
+        return img;
     }
 
 }
