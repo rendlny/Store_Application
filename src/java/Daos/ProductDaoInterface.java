@@ -18,6 +18,7 @@ public interface ProductDaoInterface {
     public boolean deleteProduct(Product p);
     public ArrayList<Product> listAllProducts();
     public ArrayList<Product> searchProducts(String searchTerm);
+    public ArrayList<Product> searchProductsLike(String searchTerm);
     public ArrayList<Product> addImageToProduct(ProductImage img);
     public ArrayList<Product> removeImageFromProduct(ProductImage img);
     
